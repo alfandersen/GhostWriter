@@ -24,7 +24,9 @@ void trig() {
   digitalWrite(loadPin, HIGH);
   delay(20);
   digitalWrite(loadPin, LOW);
+  //delay(200);
   digitalWrite(trigPin, HIGH);
-  delay(100);
+  delay(150);
   digitalWrite(trigPin, LOW);
+  //delay(50);
 }

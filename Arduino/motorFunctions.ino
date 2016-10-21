@@ -8,7 +8,33 @@ int findChar(char c){
 bool moveDaisyTo(char c){
   int charNo = findChar(c);
   if(charNo == -1) return false;
-  daisy.step((charNo - daisyPos) * 2);
+  
+  int stepsToMove = (charNo - daisyPos) * 2;
+  
+  int a = findChar('a'); //34
+  Serial.print(c);
+  Serial.print(":\t no ");
+  Serial.print(charNo);
+  Serial.print("\t pos ");
+  Serial.print(daisyPos);
+  Serial.print("\t move ");
+  
+  if(daisyPos >= a && charNo < a){
+    stepsToMove -= 1;
+    Serial.print(stepsToMove);
+    Serial.println(" \t unter");
+  }
+  else if(daisyPos < a && charNo >= a){
+    stepsToMove += 1;
+    Serial.print(stepsToMove);
+    Serial.println(" \t over");
+  }
+  else {
+    Serial.print(stepsToMove);
+    Serial.println();
+  }
+  
+  daisy.step(stepsToMove);
   daisyPos = charNo;
   return true;
 }

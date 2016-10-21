@@ -1,8 +1,8 @@
 #include <Stepper.h>
 
 String inputString = "";
-//String charArray = "1324567809$ø€å£<Ø>\"æ´§!Æ`Å^R'Q_OJG?D\"C-FE=BV&YATLSPZ*X+K)H(UIN;W:M,.ersaiocjmlhpndfgukvbyzqxjw/%";
-String charArray = "9087654231%/wjxqzybvkugfdnphlmjcoiasre.,M:W;NIU(H)K+X*ZPSLTAY&VB=EF-C+D?GJO_Q'R^Å+Æ!++++>Ø<+++++"; // reversed
+//String charArray = "1324567809$ø€å£<Ø>\"æ´§!Æ`Å^R'Q_OJG?D\"C-FE=BV&YATLSPZ*X+K)H(UIN;W:M,.ersaioctmlhpnbfgukvdyzqxjw/%";
+String charArray = "9087654231%/wjxqzydvkugfbnphlmtcoiasre.,M:W;NIU(H)K+X*ZPSLTAY&VB=EF-C+D?GJO_Q'R^Å+Æ!++++>Ø<+++++"; // reversed
 
 int sweeperLastDir = 0;
 int sweeperMaxPos = 75;
@@ -30,6 +30,7 @@ void setup() {
   daisy.setSpeed(100);
   
   homing();
+  //daisy.setSpeed(1);
 }
 
 void loop() {

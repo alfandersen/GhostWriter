@@ -10,7 +10,7 @@ bool moveDaisyTo(char c){
   if(charNo == -1) return false;
   
   int stepsToMove = (charNo - daisyPos) * 2;
-  
+  /*
   int a = findChar('a'); //34
   Serial.print(c);
   Serial.print(":\t no ");
@@ -33,7 +33,7 @@ bool moveDaisyTo(char c){
     Serial.print(stepsToMove);
     Serial.println();
   }
-  
+  */
   daisy.step(stepsToMove);
   daisyPos = charNo;
   return true;

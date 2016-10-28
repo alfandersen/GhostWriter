@@ -1,7 +1,7 @@
 void writeString(String s){
   int charsThisLine = 0;
   inputStringComplete = false;
-  //s.toUpperCase();
+  s.toUpperCase();
   for(int i = 0; i < s.length(); i++){
     typeChar(s[i]);
     charsThisLine++;
@@ -13,7 +13,7 @@ void writeString(String s){
       }
     }
   }
-  //newLine(); 
+  newLine(); 
   inputString = "";
 }
 

@@ -10,7 +10,7 @@ int sweeperPos = 0;
 int daisyPos = 0;
 
 Stepper sweeper(100, 22, 23, 24, 25);
-Stepper roller(60, 34, 35, 36, 37);
+Stepper roller(100, 34, 35, 36, 37);
 Stepper daisy(95, 26, 27, 28, 29);
 
 int loadPin = 30;

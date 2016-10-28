@@ -7,7 +7,7 @@ void writeString(String s){
     charsThisLine++;
     if(s[i] == ' '){
       
-      if(!nextWordFits(i+1, charsThisLine || sweeperPos >= sweeperMaxPos)){
+      if(!nextWordFits(i+1, charsThisLine) || sweeperPos >= sweeperMaxPos){
         newLine();
         charsThisLine = 0;
       }

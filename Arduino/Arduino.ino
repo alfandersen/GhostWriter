@@ -1,13 +1,17 @@
 #include <Stepper.h>
 
 String inputString = "";
-//String charArray = "1324567809$ø€å£<Ø>\"æ´§!Æ`Å^R'Q_OJG?D\"C-FE=BV&YATLSPZ*X+K)H(UIN;W:M,.ersaioctmlhpnbfgukvdyzqxjw/%";
-String charArray = "9087654231%/wjxqzydvkugfbnphlmtcoiasre.,M:W;NIU(H)K+X*ZPSLTAY&VB=EF-C+D?GJO_Q'R^Å+Æ!++++>Ø<+++++"; // reversed
+//String daisyArray = "1324567809$ø€å£<Ø>\"æ´§!Æ`Å^R'Q_OJG?D\"C-FE=BV&YATLSPZ*X+K)H(UIN;W:M,.ersaioctmlhpnbfgukvdyzqxjw/%";
+String daisyArray = "9087654231%/wjxqzydvkugfbnphlmtcoiasre.,M:W;NIU(H)K+X*ZPSLTAY&VB=EF-C+D?GJO_Q'R^Å+Æ!++++>Ø<+++++"; // reversed
 
 int sweeperLastDir = 0;
 int sweeperMaxPos = 75;
 int sweeperPos = 0;
 int daisyPos = 0;
+
+int stepsPrCharSweeper = 10;
+int stepsPrCharRoller = 40;
+int stepsPrCharDaisy = 2;
 
 Stepper sweeper(100, 22, 23, 24, 25);
 Stepper roller(100, 34, 35, 36, 37);
@@ -18,6 +22,8 @@ int trigPin = 31;
 
 boolean inputStringComplete = false;
 boolean doneTyping = false;
+
+String endLineCommand = "EnDlInE";
 
 void setup() {
   Serial.begin(9600);

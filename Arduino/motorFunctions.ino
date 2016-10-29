@@ -1,6 +1,6 @@
 int findChar(char c){
-  for(int i = 0; i < charArray.length(); i++){
-    if(charArray[i] == c) return i;
+  for(int i = 0; i < daisyArray.length(); i++){
+    if(daisyArray[i] == c) return i;
   }
   return -1;
 }
@@ -8,39 +8,13 @@ int findChar(char c){
 bool moveDaisyTo(char c){
   int charNo = findChar(c);
   if(charNo == -1) return false;
-  
-  int stepsToMove = (charNo - daisyPos) * 2;
-  /*
-  int a = findChar('a'); //34
-  Serial.print(c);
-  Serial.print(":\t no ");
-  Serial.print(charNo);
-  Serial.print("\t pos ");
-  Serial.print(daisyPos);
-  Serial.print("\t move ");
-  
-  if(daisyPos >= a && charNo < a){
-    stepsToMove -= 1;
-    Serial.print(stepsToMove);
-    Serial.println(" \t unter");
-  }
-  else if(daisyPos < a && charNo >= a){
-    stepsToMove += 1;
-    Serial.print(stepsToMove);
-    Serial.println(" \t over");
-  }
-  else {
-    Serial.print(stepsToMove);
-    Serial.println();
-  }
-  */
-  daisy.step(stepsToMove);
+  daisy.step((charNo - daisyPos) * stepsPrCharDaisy);
   daisyPos = charNo;
   return true;
 }
 
 void moveSweeper(int chars){
-  sweeper.step(chars*10);
+  sweeper.step(chars * stepsPrCharSweeper);
   sweeperPos += chars;
   if(chars > 0) sweeperLastDir = 1;
   else if(chars < 0) sweeperLastDir = -1;
@@ -48,11 +22,10 @@ void moveSweeper(int chars){
 
 void trig() {
   digitalWrite(loadPin, HIGH);
+  digitalWrite(trigPin, HIGH); //Up for a test
   delay(20);
   digitalWrite(loadPin, LOW);
-  //delay(200);
-  digitalWrite(trigPin, HIGH);
-  delay(150);
+  delay(130);
   digitalWrite(trigPin, LOW);
-  //delay(50);
 }
+  

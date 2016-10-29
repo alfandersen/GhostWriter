@@ -1,20 +1,24 @@
 void writeString(String s){
-  int charsThisLine = 0;
-  inputStringComplete = false;
-  s.toUpperCase();
-  for(int i = 0; i < s.length(); i++){
-    typeChar(s[i]);
-    charsThisLine++;
-    if(s[i] == ' '){
-      
-      if(!nextWordFits(i+1, charsThisLine) || sweeperPos >= sweeperMaxPos){
-        newLine();
-        charsThisLine = 0;
+  if(s.equals(endLineCommand)){
+    newLine();
+  }
+  else{
+    s.toUpperCase();
+    int charsThisLine = 0;
+    for(int i = 0; i < s.length(); i++){
+      typeChar(s[i]);
+      charsThisLine++;
+      if(s[i] == ' '){
+        if(!nextWordFits(i+1, charsThisLine) || sweeperPos >= sweeperMaxPos){
+          newLine();
+          charsThisLine = 0;
+        }
       }
     }
+    //newLine(); 
   }
-  newLine(); 
   inputString = "";
+  inputStringComplete = false;
 }
 
 boolean nextWordFits(int charNoInString, int charNoThisLine){
@@ -37,13 +41,13 @@ void typeChar(char c) {
 
 void newLine() {
   moveSweeper(-(sweeperPos+1));
-  roller.step(40);
+  roller.step(stepsPrCharRoller);
   moveSweeper(1);
 }
 
 void homing(){
   moveSweeper(-10);
-  daisy.step(200);
+  daisy.step(daisyArray.length()*stepsPrCharDaisy);
   daisyPos = findChar(','); //home character
   moveSweeper(9);
   sweeperPos = 0;

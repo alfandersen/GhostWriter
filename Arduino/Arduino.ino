@@ -1,5 +1,19 @@
 #include <Stepper.h>
 
+String keyCode[8][8] = {
+  {",","-","1","3","7","5","+","9"},
+  {".","enter","2","4","8","6","´","0"},
+  {"å","q","e","t","o","u","n","v"},
+  {"æ","z","f","h","s","k","x","c"},
+  {"¨","w","r","y","p","i","m","b"},
+  {"ø","a","g","j","d","l","active","tab"},
+  {" ","enter","axa","superback","alt","backspace","backx","ctrl"},
+  {"shift","capslock","nc","nc","nc","nc","nc","nc"}
+};
+
+int keyboardRowPin[] = {38,39,40,41,42,43,44,45};
+int keyboardColPin[] = {46,47,48,49,50,51,52,43};
+
 String inputString = "";
 //String daisyArray = "1324567809$ø€å£<Ø>\"æ´§!Æ`Å^R'Q_OJG?D\"C-FE=BV&YATLSPZ*X+K)H(UIN;W:M,.ersaioctmlhpnbfgukvdyzqxjw/%";
 String daisyArray = "9087654231%/wjxqzydvkugfbnphlmtcoiasre.,M:W;NIU(H)K+X*ZPSLTAY&VB=EF-C+D?GJO_Q'R^Å+Æ!++++>Ø<+++++"; // reversed
@@ -28,6 +42,11 @@ String endLineCommand = "EnDlInE";
 void setup() {
   Serial.begin(9600);
 
+  for(int i = 0; i < 8; i++){
+    pinMode(keyboardRowPin[i], INPUT_PULLUP);
+    pinMode(keyboardColPin[i], OUTPUT);
+  }
+  
   pinMode(loadPin, OUTPUT);
   pinMode(trigPin, OUTPUT);
   

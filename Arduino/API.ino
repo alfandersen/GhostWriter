@@ -57,3 +57,19 @@ void toggleDelete(){
   if(sweeperLastDir != -1) moveSweeper(-1);
   trig();
 }
+
+char getKeyboardInput(){
+  for(int col = 0; col < sizeof(keyboardColPin); col++){
+    digitalWrite(keyboardColPin[col], HIGH);
+    delay(1);
+    for(int row = 0; row < sizeof(keyboardRowPin); row++){
+      if(digitalRead(keyboardRowPin[row]) == LOW){
+        String key = keyCode[row][col];
+        if(key.length() == 1) {
+          return key[0];
+        }
+      }
+    }
+    digitalWrite(keyboardColPin[col], LOW);
+  }
+}

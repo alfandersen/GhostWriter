@@ -1,6 +1,9 @@
 #include <Stepper.h>
 
-String keyCode[8][8] = {
+const int keyRows = 8;
+const int keyCols = 8;
+
+String keyCode[keyCols][keyRows] = {
   {",", "-", "1", "3", "7", "5", "+", "9"},
   {".", "enter", "2", "4", "8", "6", "´", "0"},
   {"å", "q", "e", "t", "o", "u", "n", "v"},
@@ -11,8 +14,8 @@ String keyCode[8][8] = {
   {"shift", "capslock", "nc", "nc", "nc", "nc", "nc", "nc"}
 };
 
-int keyboardRowPin[] = {38, 39, 40, 41, 42, 43, 44, 45};
-int keyboardColPin[] = {46, 47, 48, 49, 50, 51, 52, 43};
+int keyboardRowPin[keyRows] = {38, 39, 40, 41, 42, 43, 44, 45};
+int keyboardColPin[keyCols] = {46, 47, 48, 49, 50, 51, 52, 43};
 
 String inputString = "";
 //String daisyArray = "1324567809$ø€å£<Ø>\"æ´§!Æ`Å^R'Q_OJG?D\"C-FE=BV&YATLSPZ*X+K)H(UIN;W:M,.ersaioctmlhpnbfgukvdyzqxjw/%";
@@ -41,12 +44,13 @@ String endLineCommand = "EnDlInE";
 
 void setup() {
   Serial.begin(9600);
-
+/*
   for (int i = 0; i < 8; i++) {
     pinMode(keyboardRowPin[i], INPUT_PULLUP);
     pinMode(keyboardColPin[i], OUTPUT);
+    digitalWrite(keyboardColPin[i], HIGH);
   }
-
+*/
   pinMode(loadPin, OUTPUT);
   pinMode(trigPin, OUTPUT);
 
@@ -59,10 +63,13 @@ void setup() {
 }
 
 void loop() {
+  serialEvent();
   if (inputStringComplete) {
+    //boolean sendDoneMsg = inputString.length() > 1;
     writeString(inputString);
+    Serial.print("done;");
   }
-  else{
-    handleUserInput();
-  }
+  //else{
+   // handleUserInput();
+  //}
 }

@@ -47,6 +47,7 @@ void newLine() {
 
 void homing() {
   moveSweeper(-10);
+  //daisy.step(-daisyArray.length()*stepsPrCharDaisy);
   daisy.step(daisyArray.length()*stepsPrCharDaisy);
   daisyPos = findChar(','); //home character
   moveSweeper(9);
@@ -59,15 +60,28 @@ void toggleDelete() {
 }
 
 String getKeyboardInput() {
-  for (int col = 0; col < sizeof(keyboardColPin); col++) {
-    digitalWrite(keyboardColPin[col], LOW);
+  for (int col = 0; col < keyCols; col++) {
+    /*Serial.print("col: ");
+    Serial.print(col);
+    Serial.print("of ");
+    Serial.println(keyCols);
+    */digitalWrite(keyboardColPin[col], LOW);
     delay(1);
-    for (int row = 0; row < sizeof(keyboardRowPin); row++) {
-      if (digitalRead(keyboardRowPin[row]) == LOW) {
+    for (int row = 0; row < keyRows; row++) {
+      /*Serial.print("\trow: ");
+      Serial.print(row);
+      Serial.print("of ");
+      Serial.println(keyCols);
+      */if (digitalRead(keyboardRowPin[row]) == LOW) {
         if(!keyCode[row][col].equals("active")){
+          /*Serial.print("\tKey pressed: ");
+          Serial.print(keyCode[row][col]);
+          Serial.println();
+          */digitalWrite(keyboardColPin[col], HIGH);
           return keyCode[row][col];
         }
       }
+      //Serial.println();
     }
     digitalWrite(keyboardColPin[col], HIGH);
   }

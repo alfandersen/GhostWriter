@@ -40,7 +40,7 @@ int trigPin = 31;
 boolean inputStringComplete = false;
 boolean doneTyping = false;
 
-String endLineCommand = "EnDlInE";
+String endLineCommand = "-endLine-";
 
 void setup() {
   Serial.begin(9600);

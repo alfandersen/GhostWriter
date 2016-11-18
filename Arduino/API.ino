@@ -1,4 +1,5 @@
 void writeString(String s) {
+  inputStringComplete = false;
   if (s.equals(endLineCommand)) {
     newLine();
   }
@@ -18,7 +19,6 @@ void writeString(String s) {
     //newLine();
   }
   inputString = "";
-  inputStringComplete = false;
 }
 
 boolean nextWordFits(int charNoInString, int charNoThisLine) {

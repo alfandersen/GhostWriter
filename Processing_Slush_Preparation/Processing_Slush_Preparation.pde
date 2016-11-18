@@ -13,7 +13,7 @@ void setup() {
   serial.bufferUntil(';');
   //fullScreen();
   size(500,500);
-  noCursor();
+ // noCursor();
   ghostLines = loadStrings("ghost.txt");
   setupDisplay();
 }
